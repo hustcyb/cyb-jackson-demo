@@ -2,6 +2,8 @@ package com.cyb.jackson.demo.domain;
 
 import java.util.Date;
 
+import com.cyb.jackson.demo.enumeration.Direction;
+import com.cyb.jackson.demo.enumeration.Gender;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 /**
@@ -21,6 +23,16 @@ public class Student {
 	 * 姓名
 	 */
 	private String name;
+	
+	/**
+	 * 性别
+	 */
+	private Gender gender;
+	
+	/**
+	 * 方位
+	 */
+	private Direction direction;
 
 	/**
 	 * 年龄
@@ -63,6 +75,22 @@ public class Student {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public Gender getGender() {
+		return gender;
+	}
+
+	public void setGender(Gender gender) {
+		this.gender = gender;
+	}
+
+	public Direction getDirection() {
+		return direction;
+	}
+
+	public void setDirection(Direction direction) {
+		this.direction = direction;
 	}
 
 	@JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")

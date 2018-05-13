@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import com.cyb.jackson.demo.domain.Student;
+import com.cyb.jackson.demo.enumeration.Direction;
+import com.cyb.jackson.demo.enumeration.Gender;
 import com.cyb.jackson.demo.query.StudentQuery;
 import com.google.common.base.Objects;
 import com.google.common.collect.Lists;
@@ -33,30 +35,11 @@ public class StudentService {
 		Student jim = new Student();
 		jim.setId(1);
 		jim.setName("Jim");
+		jim.setGender(Gender.Male);
+		jim.setDirection(Direction.South);
 		calendar.set(2001, 0, 1, 0, 0, 0);
 		jim.setBirthdate(calendar.getTime());
 		students.add(jim);
-
-		Student tom = new Student();
-		tom.setId(2);
-		tom.setName("Tom");
-		calendar.set(2001, 0, 2, 0, 0, 0);
-		tom.setBirthdate(calendar.getTime());
-		students.add(tom);
-
-		Student lucy = new Student();
-		lucy.setId(2);
-		lucy.setName("Lucy");
-		calendar.set(2001, 0, 3, 0, 0, 0);
-		lucy.setBirthdate(calendar.getTime());
-		students.add(lucy);
-
-		Student lily = new Student();
-		lily.setId(2);
-		lily.setName("Lily");
-		calendar.set(2001, 0, 4, 0, 0, 0);
-		lily.setBirthdate(calendar.getTime());
-		students.add(lily);
 	}
 
 	/**
@@ -107,5 +90,24 @@ public class StudentService {
 		}
 
 		return null;
+	}
+	
+	public Integer save(Student student) {
+		if (student == null) {
+			return null;
+		}
+		
+		Integer id;
+		if (students.isEmpty()) {
+			id = 1;
+		} else {
+			int lastIndex = students.size() - 1;
+			Student lastStudent = students.get(lastIndex);
+			id = lastStudent.getId() + 1;
+		}
+		
+		student.setId(id);
+		students.add(student);
+		return id;
 	}
 }

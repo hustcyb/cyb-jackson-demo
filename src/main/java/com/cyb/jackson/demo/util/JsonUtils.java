@@ -1,4 +1,4 @@
-package com.cyb.jackson.demo.domain;
+package com.cyb.jackson.demo.util;
 
 import java.io.IOException;
 

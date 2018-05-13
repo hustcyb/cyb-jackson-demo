@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.cyb.jackson.demo.App;
+import com.cyb.jackson.demo.util.JsonUtils;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = App.class)
